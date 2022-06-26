@@ -1,57 +1,83 @@
 ---
-title: 'Django Crash Course'
-date: 'March 5, 2021'
-excerpt: 'Django is a very powerful, high level Python framework for building web applications'
+title: 'Simple Python Project Structure That Works'
+date: 'June 26, 2022'
+excerpt: 'Build python projects that are easy to use, maintain and scalable'
 cover_image: '/images/posts/img3.jpg'
 ---
 
-Lorem markdownum fine incustoditam unda factura versum occuluere Aeneas, iuvat
-haec praepes [partes epulae](http://cui.com/), in egisse de. Caecisque ter
-manus. Munere in exhalat, ferre sed [habe quaeque saepe](http://ne.org/fretum)
-verba caput ferarum _nubila_? Patriam Cyparisse tamen, **saxum** fide postponere
-pavida ne omnes etiam, atque. Sonuit omina sed sine haerebat illic fit a mora
-in.
+In order to create a good and scalable project we also need a good scalable structure. This simple structure will make your projects easier to maintain and grow.
 
-1. Serrae enim Etruscam aquis
-2. Et premis et flumine frontem minatur oppressos
-3. Inquam rector Icarus possum vim tumulo propiusque
-4. Vulnus se Latreus
-5. Aptumque bis
+```graphql
+./src - # your project root folder
+  ├─ /assets - # media files
+  ├─ /components - # frontend componenets
+  ├─ /functions/ - # internal logic code
+  │  └─ /libs - # dont forget to organize your code!
+  ├─ //utils/ - # external logic code
+  │  └─ /repository - # connects and deals with database
+  ├─ //models - # data structure
+  .
+  .
+  .
+  └─ scripts!
+```
 
-## Turpius Aegides membris colat volentes fallere
+## How does it work?
 
-Ille fida formosus, et addunt viscera perdidit ad pondere quia tellus
-consequitur et quoque scinditque in. Ratis laborum instabat quaedam partem
-Phoebus, manus _partibus poenas_. Sola armos adhuc; chaos agit ora manifesta
-procul fugitque corpora iugales!
+It strongly takes into SOLID coding principles and the MVC model.
 
-    var ethics_font_drive = cycleSystemProgram + deprecatedTransferIp.ide(3) /
-            rgb + nybbleBaseband;
-    permalinkCertificateMacintosh(ergonomicsIsdnDns);
-    boot = bridgeDaemonActive;
+<details>
+<summary>SOLID/ MVC</summary>
 
-## O contra diu
+### SOLID
+**S**ingle-Responsibility Principle
 
-Descendit _auras cum misi_ contactu tenax lacus, **quaerensque invitum
-premuntur** patria. Puris ille pictis spiritus placent vestigia et noctis
-sceleratos laudis egere retroque. Patrem contenta magni margine satis inprudens
-nymphae invito verba saepe: genus sed numinis pugnat meum iterumque attonitas
-rursus utve. Constituit praestet liceat opprobria Medusae huius, excutiuntque
-nam nil, pariter.
+**O**pen-Closed Principle
 
-Coma **laudes manet** ausus hortaturque matrisque Veneris proximus tu iamque
-aptius claudit. Tmolus tetigere iussos animumque quid poplite Hippotaden? Quod
-sibi Spartana sidera, lupum Nereusque quoque ramum, vertuntur Peleus Amuli
-oscula: tamen. Surgere Epidaurius movit crede soceri Euboicam quoque.
+**L**iskov Substitution Principle
 
-Unde stabant, acuta, percussit denique; hoc illic et herbis minimas parvum? Quid
-_gemino profectus et_ dici postquam tot; aquarum quod relanguit est si
-quodcumque. Ossaque protinus, quod somno est, repetit, hoc passu est. Qui devia;
-respice humum vobis oscula, in Lotis nymphae.
+**I**nterface Segregation Principle
 
-Dolet certamina velle dexteriore mutatus saepe, tellure ubi unguibus, gestu.
-Illis cuius finem Sirenes adsueta stridore, pictas quo edidit, nec utque et
-capillos ego rapi Bootes, sculpsit. Protinus sibi denique sibi primum Acheloides
-ante exspectant gaudeat Calydonius cernit, duxit pariterque dolet epulis? Nostri
-visae nisi aeripedes stant quem saepibus cannis protectus candens praestet:
-porrigar **patriam** Alcmene: attonitas.
+**D**ependency inversion Principle
+
+<sup>If you would like to learn more about SOLID principles applied in python please read my post on this!</sup>
+
+### MVC
+
+- Model defines the data structure
+- View defines what will be shown to the UI
+- Controller contains the business logic
+
+<sup>I sould also have a post about MVC as well!</sup>
+
+</details>
+
+## Script vc Functions
+
+First lets get something clear.
+
+Scripts are ment to be run while functions/libs are ment to be imported so your scripts must **always** be in the root folder of your project
+
+## Functions and Components
+
+Functions and components are the main folder of your code, these represent (for the most part) the controller and view (from MVC).
+
+You should have all your internal business logic contained in your functions folder. In other words we can not use any external API or service on this code, rathar we should import another code that will do it for us.
+
+In order to do it the best way you should also import respecting the SOLID `dependency inversion principle`.
+
+## External code
+
+So the code that will use external services should be located in the `utils` folder.
+
+There is one folder/file that is also standardized (in my structure). The `repository`.
+
+It is the code that will handle the interface between python your database.
+
+## Models and Assets
+
+Models is only usefull if you are running (and I recomend) any type of data validation. I personally use the marshmallow library.
+
+Models for the validatios should be stored in the models folder.
+
+Finally assets is the folder to save all sorts of media files such as pictures, videos and csv files.
