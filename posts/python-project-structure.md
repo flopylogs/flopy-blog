@@ -2,7 +2,7 @@
 title: 'Simple Python Project Structure That Works'
 date: 'June 26, 2022'
 excerpt: 'Build python projects that are easy to use, maintain and scalable'
-cover_image: '/images/posts/img3.jpg'
+cover_image: '/images/posts/img1.jpg'
 ---
 
 In order to create a good and scalable project we also need a good scalable structure. This simple structure will make your projects easier to maintain and grow.
